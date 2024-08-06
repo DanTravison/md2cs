@@ -14,7 +14,7 @@ namespace md2cs.Helpers
 
         public static string DirectoryForAssembly(Assembly assembly)
         {
-            var codeBase = assembly.CodeBase;
+            var codeBase = assembly.Location;
             var uri = new UriBuilder(codeBase);
             var path = Uri.UnescapeDataString(uri.Path);
             return Path.GetDirectoryName(path);

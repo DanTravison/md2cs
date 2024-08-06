@@ -48,6 +48,8 @@ namespace md2cs
             foreach (var definition in FontDefinitions)
             {
                 var downloadResult = await MaterialDesignDownloader.DownloadIconCodes(definition);
+                downloadResult.Icons.Sort(MaterialDesignIcon.DotNetNameComparer);
+
                 var code = CodeWriter.Write(definition, downloadResult.Icons, downloadResult.IconUpdateDate);
             
                 Console.WriteLine($"Writing output file for '{definition.FontName}'...");
